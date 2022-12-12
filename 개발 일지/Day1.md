@@ -22,7 +22,7 @@
 
 	b. BLOG 개설
 
-		: GitHub에 새로운 Repository(*Portfolio*) 생성
+		: GitHub에 새로운 Repository(Portfolio) 생성
 
 	c. 프로젝트 주제 정하기
 
