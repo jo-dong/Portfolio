@@ -56,7 +56,6 @@ public class UserDTO {
 ---
 
 ## 추가 사항
-
-![Alt text](markdown_practice.png)
+![markdown_practice](https://user-images.githubusercontent.com/111822816/207536178-707cbaed-cd14-4967-a7cd-16d0877d9854.png)
 
 > 개발일지 작성에 용이하도록 MarkDown 언어에 대해 추가적으로 연습을 하였다.
