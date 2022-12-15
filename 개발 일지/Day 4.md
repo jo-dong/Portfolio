@@ -23,10 +23,12 @@
 💡 와이어 프레임 작업 일부
 
 <!-- 와이어 프레임 Image -->
+![10_search-ideal-type html](https://user-images.githubusercontent.com/111822816/207799135-0eb528c2-95e0-452f-94d1-7457d087c4ae.png)
 
 💡 sitemap 상세
 
 <!-- sitemap Image -->
+![sitemap](https://user-images.githubusercontent.com/111822816/207799192-87dee925-d0c3-48c8-961c-6de91be5ff39.png)
 
 ---
 
