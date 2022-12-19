@@ -65,6 +65,7 @@ public class UserRegisterRepository implements MarryRepository {
 ## View
 
 <!-- image -->
+![sign-up](https://user-images.githubusercontent.com/111822816/208379146-b91a7d0b-06a2-45cd-930c-1b16fa6bb103.png)
 
 ---
 
