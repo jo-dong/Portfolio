@@ -17,18 +17,22 @@
 > 아래와 같이 입력 후 회원가입 버튼을 클릭하면
 
 <!-- Image 1 -->
+![image1](https://user-images.githubusercontent.com/111822816/208860663-7a7459b8-faa5-4bce-805b-0874167309f8.png)
 
 > 분명히 Method 내에서는 이름, 나이가 찍히는데
 
 <!-- Image 2 -->
+![image2](https://user-images.githubusercontent.com/111822816/208860691-c0ea1899-77f3-4ac2-a238-a8fc1a700c5d.png)
 
 > DB에는 이름, 나이에 해당하는 부분이 null이 들어간 모습
 
 <!-- Image 3 -->
+![image3](https://user-images.githubusercontent.com/111822816/208861407-5ac0cacc-c2cb-47d8-b614-ceea7b6e842b.png)
 
 > Test 역시 성공
 
 <!-- Test Image -->
+![test image](https://user-images.githubusercontent.com/111822816/208861438-980f0d5a-6494-431f-b0c6-1216517b7148.png)
 
 > 뭐가 문제인지 계속 보다보니 결국 이름, 나이 부분의 Mapping에 문제가 있지 않을까 결론이 났고
 
@@ -86,6 +90,7 @@ return user;
 > 문제 해결 후 DB
 
 <!-- DB image -->
+![db image](https://user-images.githubusercontent.com/111822816/208862151-3b5b4276-a7ea-4d6b-96fe-50b788e52ddb.png)
 
 ---
 
