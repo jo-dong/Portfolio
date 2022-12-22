@@ -17,6 +17,7 @@
 > 이상형 검색 기능 view
 
 <!-- image -->
+![view_ideal_check](https://user-images.githubusercontent.com/111822816/209100060-b3cbcaf1-af20-4094-bd36-72025cacd7e3.png)
 
 > controller
 
