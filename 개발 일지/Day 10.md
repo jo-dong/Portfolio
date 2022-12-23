@@ -51,6 +51,7 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL5Dialect >
 ```
 
 <!-- image -->
+![error](https://user-images.githubusercontent.com/111822816/209279724-2f1d25b6-f745-426f-9ddc-16b40788b234.png)
 
 - 해결
 
@@ -72,6 +73,7 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL5Dialect >
   > save method 실행 시 아래와 같은 Error 발생
 
   <!-- image 2 -->
+![error2](https://user-images.githubusercontent.com/111822816/209279736-6b01c9fb-fbb2-46c7-b7d8-85f1da5592ca.png)
 
 - 해결 : id에 auto_increment를 붙여주어 자동 생성되게 한다.
 
