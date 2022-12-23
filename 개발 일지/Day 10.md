@@ -17,7 +17,7 @@
 ```
 🎈 build.gradle 파일에 dependencies
        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	   implementation 'mysql:mysql-connector-java'
+       implementation 'mysql:mysql-connector-java'
     추가
 
 🎈 application.properties 파일에
