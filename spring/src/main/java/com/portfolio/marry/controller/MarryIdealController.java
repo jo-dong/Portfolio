@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/ideal")
 public class MarryIdealController {
 	
-	@PostMapping("/check")
-	public String check(@RequestParam String age) {
-		return "";
-	}
+//	@PostMapping("/check")
+//	public String check(@RequestParam String age) {
+//		return "";
+//	}
 }

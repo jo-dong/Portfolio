@@ -22,11 +22,14 @@ public class MarryService {
 		return user;
 	}
 	
+	// 로그인
+	public void login(String userId, String userPw) {
+		userRepository.loggingIn(userId, userPw);
+	}
+	
 	// 이상형 검색
 	public void search(String age, String residence, String mbti) {
-		idealRepository.findByAge(age);
-		idealRepository.findByAddress(residence);
-		idealRepository.findByMbti(mbti);
+		idealRepository.findIdeal(age);
 	}
 	
 }

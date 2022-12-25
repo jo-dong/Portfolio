@@ -1,6 +1,5 @@
 package com.portfolio.marry.repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
@@ -21,20 +20,10 @@ public class IdealTypeRepository {
 	@Autowired private EntityManager em;
 	
 	// 이상형 검색
-	public Optional<UserDTO> findByAge(String age) {
+	public Optional<UserDTO> findIdeal(String age) {
 		String str = "";
-		em.createQuery(str, UserDTO.class);
+		em.createQuery(str);
 		return Optional.empty();
 	}
-	
-	public Optional<UserDTO> findByAddress(String residence) {
-		
-		return Optional.empty();
-	}
-
-	public Optional<UserDTO> findByMbti(String mbti) {
-	
-	return Optional.empty();
-}
 	
 }

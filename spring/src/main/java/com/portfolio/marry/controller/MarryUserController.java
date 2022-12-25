@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.portfolio.marry.domain.UserDTO;
@@ -20,18 +19,30 @@ public class MarryUserController {
 	
 	@GetMapping("/user/login")
 	public String login() {
-		return "user/login";
+		return "/user/login";
 	}
+	
+//	@PostMapping("/user/login")
+//	public String userLogin(@RequestParam String userId,
+//							@RequestParam String userPw) {
+//		int i = service.login(userId, userPw);
+//		return "/user/main";
+//	}
 	
 	@GetMapping("/user/sign-up")
 	public String signUp() {
 		return "user/sign-up";
 	}
 	
+	@GetMapping("/user/main")
+	public String main() {
+		return "user/main";
+	}
+	
 	@PostMapping("/user/sign-up")
 	public String register(@ModelAttribute UserDTO user) {
 		service.join(user);
-		return "user/main";
+		return "redirect:main";
 	}
 	
 	@PostMapping("/ideal/check")
