@@ -21,6 +21,7 @@
 > 너무 난잡하고 Naming도 마음대로인 것 같아 프로젝트를 재생성하여 아래와 같이 다시 정리
 
 <!-- Image -->
+![code](https://user-images.githubusercontent.com/111822816/209551870-49f1429e-89d2-4c7a-a1fe-1a8f8aee9af0.png)
 
 ---
 
@@ -37,6 +38,7 @@
 ```
 
 <!-- Image -->
+![db1](https://user-images.githubusercontent.com/111822816/209551880-e3dc7df6-9600-47a9-b225-f6ffd9a9fdd2.png)
 
 ---
 
