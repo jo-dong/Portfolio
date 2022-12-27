@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
-import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +11,12 @@ import org.springframework.stereotype.Repository;
 
 import himedia.project.domain.Member;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Repository
 @Transactional
 @RequiredArgsConstructor
+@Slf4j
 public class MemberRepositoryImpl implements MemberRepository {
 	
 	@Autowired private final EntityManager em;
@@ -23,24 +24,8 @@ public class MemberRepositoryImpl implements MemberRepository {
 	@Override
 	public Member save(Member member) {
 		em.persist(member);
+		log.info("repo : 저장 완료");
 		return member;
-	}
-	
-	@Override
-	public boolean loginCheck(Member member, HttpSession session) {
-		return false;
-	}
-	
-	@Override
-	public void logout(HttpSession session) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	@Override
-	public Member viewMember(Member member) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 	
 	@Override

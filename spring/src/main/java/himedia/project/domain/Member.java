@@ -1,4 +1,6 @@
 package himedia.project.domain;
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -6,15 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Positive;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter @Setter @Entity
+import lombok.Data;
+
+@Data @Entity
 @Table(name = "member_info")
 public class Member {
 /*
@@ -58,10 +58,12 @@ values('b1234', '2222', '박아무개', 32, '여성', 'ISTJ', '제주');
 	private String memberPw;
 	
 	// member name
+	@NotBlank(message = "이름은 필수 입력 항목입니다.")
 	@Column(name = "member_name")
 	private String memberName;
 	
 	// member age
+	@Positive
 	@Column(name = "member_age")
 	private Integer memberAge;
 	
@@ -76,21 +78,11 @@ values('b1234', '2222', '박아무개', 32, '여성', 'ISTJ', '제주');
 	// member region
 	@Column(name = "region")
 	private String region;
-
-	public Member(String memberId, String memberPw, String memberName, 
-				   Integer memberAge, String gender,
-				   String mbti, String region) {
-		this.memberId = memberId;
-		this.memberPw = memberPw;
-		this.memberName = memberName;
-		this.memberAge = memberAge;
-		this.gender = gender;
-		this.mbti = mbti;
-		this.region = region;
-	}
-		
-		
 	
-
+	// 권한
+	private String role;
 	
+	// 회원가입한 날짜
+	@CreationTimestamp
+    private Timestamp date;
 }
