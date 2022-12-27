@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login Page</title>
 </head>
 <body>
 	<h1>login</h1>
+	<div th:if="${param.error}">Invalid username and password.</div>
+	<div th:if="${param.logout}">You have been logged out.</div>
+	<form th:action="@{/member/login}">
+		<div>
+			<label for="username">ID : </label> <input type="text"
+				name="username">
+		</div>
+		<div>
+			<label for="password">PW : </label> <input type="password"
+				name="password">
+		</div>
+		<br>
+		<div>
+			<input type="submit" value="로그인" />
+			<button type="button" th:onclick="|location.href='@{/member/sign-up}'|"/>
+				회원가입
+			</button>
+		</div>
+	</form>
 </body>
 </html>
