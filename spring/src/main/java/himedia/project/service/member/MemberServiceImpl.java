@@ -1,12 +1,12 @@
-package himedia.project.service;
+package himedia.project.service.member;
 
 import javax.transaction.Transactional;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import himedia.project.domain.Member;
-import himedia.project.repository.MemberRepository;
+import himedia.project.domain.member.Member;
+import himedia.project.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,16 +14,16 @@ import lombok.extern.slf4j.Slf4j;
 @Transactional
 @RequiredArgsConstructor
 @Slf4j
-public class MarryServiceImpl implements MarryService {
+public class MemberServiceImpl implements MemberService {
 	
-	private final MemberRepository repository;
+	private final MemberRepository memberRepository;
 	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	// [회원가입]
 	@Override
 	public void save(Member member) {
 		member.setMemberPw(bCryptPasswordEncoder.encode(member.getMemberPw()));
-		repository.save(member);
+		memberRepository.save(member);
 		log.info("service : 전달 완료");
 	}
 	

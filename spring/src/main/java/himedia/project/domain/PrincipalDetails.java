@@ -6,6 +6,8 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import himedia.project.domain.member.Member;
+
 public class PrincipalDetails implements UserDetails {
 	private static final long serialVersionUID = 1L;
 	private Member member;

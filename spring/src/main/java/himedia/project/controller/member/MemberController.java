@@ -1,4 +1,4 @@
-package himedia.project.controller;
+package himedia.project.controller.member;
 
 import javax.validation.Valid;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import himedia.project.domain.Member;
-import himedia.project.service.MarryService;
+import himedia.project.domain.member.Member;
+import himedia.project.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MemberController {
 	
-	private final MarryService service;
+	private final MemberService service;
 		
 	// 회원가입
 	@PostMapping("/sign-up")
