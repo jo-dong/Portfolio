@@ -31,7 +31,7 @@ public class MemberController {
 	public String register(@Valid @ModelAttribute Member member) {
 		service.save(member);
 		log.info("controller : 전달 완료");
-		return "redirect:/login";
+		return "redirect:/";
 	}
 	
 	@GetMapping("/sign-up")

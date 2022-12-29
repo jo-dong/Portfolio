@@ -40,7 +40,7 @@ rollback;
 select * from member_info m where m.member_id='a3333';
 
 delete from marry.member_info
-where member_name like '미쓰라';
+where idx in(1,2);
 
 alter table member_info 
        add column date datetime;

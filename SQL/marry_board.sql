@@ -38,6 +38,7 @@ values(1, '안녕하세요', '안녕하세요~🎃', 30, 2, now(), sysdate(), 50
 insert into marry.board(title, content, likes, dislikes, create_date, update_date, hit_cnt)
 values('여보세요🎪', '내용내용🎈', 30, 2, now(), sysdate(), 40);
 
+select * from marry.member_info;
 select * from marry.board;
 select * from comment;
 

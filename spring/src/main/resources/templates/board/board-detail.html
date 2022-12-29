@@ -4,32 +4,36 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-	<div th:each="board:${boardDetail}">
-		<div>순번 : </div>
-		<div th:text="${board.boardIdx}"></div>
+<body th:each="board:${boardDetail}">
+	<div>
+		<label>순번 : </label>
+		<input type="text" th:value="${board.boardIdx}" readonly>
 		<br>
-		<div>제목 : </div>
-		<div th:text="${board.title}"></div>
+		<label>제목 : </label>
+		<input type="text" th:value="${board.title}" readonly>
 		<br>
-		<div>내용 : </div>
-		<div th:text="${board.content}"></div>
+		<label>내용 : </label>
+		<textarea th:value="${board.content}" readonly></textarea>
 		<br>
-		<div>좋아요 : </div>
-		<div th:text="${board.likes}"></div>
+		<label>좋아요 : </label>
+		<input type="text" th:value="${board.likes}" readonly>
 		<br>
-		<div>싫어요 : </div>
-		<div th:text="${board.dislikes}"></div>
+		<label>싫어요 : </label>
+		<input type="text" th:value="${board.dislikes}" readonly>
 		<br>
-		<div>작성 시간 : </div>
-		<div th:text="${board.createDate}"></div>
+		<label>작성 시간 : </label>
+		<input type="text" th:value="${board.createDate}" readonly>
 		<br>
-		<div>수정 시간 : </div>
-		<div th:text="${board.updateDate}"></div>
+		<label>수정 시간 : </label>
+		<input type="text" th:value="${board.updateDate}" readonly>
 		<br>
-		<div>조회수 : </div>
-		<div th:text="${board.hitCnt}"></div>
+		<label>조회수 : </label>
+		<input type="text" th:value="${board.hitCnt}" readonly>
 		<br>
+	</div>
+	<div>
+		<input type="button" th:onclick="|location.href='@{/board}'|" value="목록으로">
+		<input type="button" th:onclick="|location.href='@{/board/update/{boardIdx}(boardIdx=${board.boardIdx})}'|" value="게시글 수정">
 	</div>
 </body>
 </html>
