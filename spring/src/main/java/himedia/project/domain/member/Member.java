@@ -1,6 +1,4 @@
 package himedia.project.domain.member;
-import java.sql.Timestamp;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,12 +8,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
-import org.hibernate.annotations.CreationTimestamp;
-
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data @Entity
 @Table(name = "member_info")
+@NoArgsConstructor
 public class Member {
 /*
 -- [테이블 생성] =============================
@@ -32,7 +31,7 @@ create table member_info(
 );
 
 -- [조회] =====================================
-select * from userinfo;
+select * from member_info;
 
 -- [추가] =====================================
 insert into member_info(member_id, member_pw, member_name, member_age, gender, mbti, region)
@@ -78,11 +77,5 @@ values('b1234', '2222', '박아무개', 32, '여성', 'ISTJ', '제주');
 	// member region
 	@Column(name = "region")
 	private String region;
-	
-	// 권한
-	private String role;
-	
-	// 회원가입한 날짜
-	@CreationTimestamp
-    private Timestamp date;
+
 }

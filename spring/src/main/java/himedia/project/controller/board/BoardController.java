@@ -4,16 +4,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import himedia.project.domain.board.Board;
 import himedia.project.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/board")
+@Slf4j
 public class BoardController {
 	
 	private final BoardService boardService;
@@ -25,8 +28,17 @@ public class BoardController {
 	}
 	
 	@GetMapping("/{boardIdx}")
-	public String board(Board board, Model model) {
-		model.addAttribute("board", boardService.getBoard(board));
+	public String board(@PathVariable(value="boardIdx", required = false) Long boardIdx,
+						Model model) {
+		Board board = new Board();
+		board.setBoardIdx(boardIdx);
+		Board boardDetail = boardService.getBoard(board);
+		
+		log.info("boardDetail -> {}", boardDetail.getBoardIdx());
+		log.info("boardDetail -> {}", boardDetail.getTitle());
+		log.info("boardDetail -> {}", boardDetail.getContent());
+		
+		model.addAttribute("boardDetail", boardDetail);
 		return "/board/board-detail";
 	}
 	
@@ -45,7 +57,7 @@ public class BoardController {
 		return "/board/board-write";
 	}
 	
-	@PostMapping
+	@PostMapping("/write")
 	public String write(Board board) {
 		boardService.insertBoard(board);
 		return "redirect:/board";

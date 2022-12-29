@@ -46,12 +46,6 @@ public class Comment extends BaseTime {
 		this.content = content;
 	}
 	
-	/**
-	 * Assert.notNull
-	 * : 값이 null이면 예외를 발생시키는 Method
-	 * : 방어 코드의 역할
-	 * : 테스트 실행 시 어디에서 문제가 발생했는지 쉽게 찾을 수 있음
-	 */
 	public Comment update(Comment comment) {
 		Assert.notNull(content, "내용은 필수 입력 항목입니다.");
 		this.content = comment.content;
