@@ -16,17 +16,20 @@
 
 > 🎈 Board View
 
-> > /board
+> > /board  : 이모지도 저장 가능
 
 <!-- Image1 -->
+![board1](https://user-images.githubusercontent.com/111822816/209929570-d548b7b2-bfe0-4e63-a116-12e56cacbd1f.png)
 
 > > /board/{boardIdx}
 
 <!-- Image2 -->
+![board2](https://user-images.githubusercontent.com/111822816/209929582-5637c6db-8146-4c83-b666-1016b09e498e.png)
 
 > > /board/write
 
 <!-- Image3 -->
+![board3](https://user-images.githubusercontent.com/111822816/209929603-faea12dc-f609-49d8-8103-8cb1829b82f2.png)
 
 > 🎈 Board Controller (update/delete 아직 미완)
 
@@ -112,14 +115,17 @@ public class BoardController {
 > > 로그인을 하면
 
 <!-- Image1 -->
+![login1](https://user-images.githubusercontent.com/111822816/209929615-ed4ecfac-d871-4189-a966-d5fcca552e26.png)
 
 > > member_name을 화면에 출력
 
 <!-- Image2 -->
+![login2](https://user-images.githubusercontent.com/111822816/209929624-aa62cfdc-2803-49da-8b9f-de70c8165e59.png)
 
 > > Session/Cookie에도 저장
 
 <!-- Image3 -->
+![login3](https://user-images.githubusercontent.com/111822816/209929633-872a77bb-fe1a-43dc-bbc2-60d979919701.png)
 
 ---
 
