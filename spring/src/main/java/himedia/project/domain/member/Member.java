@@ -1,4 +1,4 @@
-package himedia.project.domain;
+package himedia.project.domain.member;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;

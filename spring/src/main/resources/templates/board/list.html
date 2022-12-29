@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>순번</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>작성 시간</th>
+            <th>수정 시간</th>
+            <th>조회수</th>
+            <th>좋아요</th>
+            <th>싫어요</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr th:each="board: ${boardList}">
+            <td th:text="${board.boardIdx}">순번</td>
+            <td>
+              <a
+                th:href="@{|/board/${board.boardIdx}|}"
+                th:text="${board.title}"
+                >제목</a
+              >
+            </td>
+            <td th:text="${board.memberName}">작성자</td>
+            <td th:text="${board.createDate}">작성 시간</td>
+            <td th:text="${board.updateDate}">수정 시간</td>
+            <td th:text="${board.hitCnt}">조회수</td>
+            <td th:text="${board.likes}">좋아요</td>
+            <td th:text="${board.dislikes}">싫어요</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
