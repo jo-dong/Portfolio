@@ -2,27 +2,26 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Login Page</title>
+<title>로그인</title>
 </head>
 <body>
-	<h1>login</h1>
-	<div th:if="${param.error}">Invalid username and password.</div>
-	<div th:if="${param.logout}">You have been logged out.</div>
-	<form th:action="@{/member/login}">
+	<h1>로그인하기</h1>
+	<form th:action="@{/member/login}" method="post">
 		<div>
-			<label for="username">ID : </label> <input type="text"
-				name="username">
+			<label for="memberId">로그인 ID</label> <input type="text"
+				name="memberId" />
 		</div>
 		<div>
-			<label for="password">PW : </label> <input type="password"
-				name="password">
+			<label for="memberPw">비밀번호</label> <input type="password"
+				name="memberPw" />
 		</div>
-		<br>
+		<div th:if="error">
+			<p id="valid" style="color: red; font-size: 12px;">
+				<a th:text="${exception}"></a>
+			</p>
+		</div>
 		<div>
-			<input type="submit" value="로그인" />
-			<button type="button" th:onclick="|location.href='@{/member/sign-up}'|"/>
-				회원가입
-			</button>
+			<button type="submit">로그인</button>
 		</div>
 	</form>
 </body>

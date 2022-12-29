@@ -1,4 +1,4 @@
-package himedia.project.repository.member;
+//package himedia.project.repository.member;
 //package himedia.project.repository;
 //
 //import java.util.List;

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:each="board:${boardDetail}">
+		<div>순번 : </div>
+		<div th:text="${board.boardIdx}"></div>
+		<br>
+		<div>제목 : </div>
+		<div th:text="${board.title}"></div>
+		<br>
+		<div>내용 : </div>
+		<div th:text="${board.content}"></div>
+		<br>
+		<div>좋아요 : </div>
+		<div th:text="${board.likes}"></div>
+		<br>
+		<div>싫어요 : </div>
+		<div th:text="${board.dislikes}"></div>
+		<br>
+		<div>작성 시간 : </div>
+		<div th:text="${board.createDate}"></div>
+		<br>
+		<div>수정 시간 : </div>
+		<div th:text="${board.updateDate}"></div>
+		<br>
+		<div>조회수 : </div>
+		<div th:text="${board.hitCnt}"></div>
+		<br>
+	</div>
+</body>
+</html>

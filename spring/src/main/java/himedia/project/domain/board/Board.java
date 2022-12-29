@@ -16,8 +16,27 @@ import org.springframework.util.Assert;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+/* 
+ * [board Table create query]
+
+create table board (
+	board_idx bigint NOT NULL auto_increment,
+    title varchar(255) NOT NULL,
+    content longtext NOT NULL,
+  # 로그인 해결 후 member_name 추가
+    likes int default 0,
+    dislikes int default 0,    
+    create_date datetime,
+    update_date datetime,
+    hit_cnt int default 0,
+    primary key(board_idx)
+);
+ */
 
 @Getter
+@Setter
 @Entity
 @DynamicInsert
 @DynamicUpdate
@@ -26,7 +45,7 @@ import lombok.NoArgsConstructor;
 public class Board extends BaseTime {
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "board_idx")
+	@Column(name = "board_idx", nullable = false)
 	private Long boardIdx;
 	
 	@Column(length = 250, nullable = false)
