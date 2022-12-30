@@ -114,7 +114,7 @@ public class BoardController {
 
 ### 📌 문제 발생
 
-> ⓐ return의 주소에 "redirect:/board/" + boardIdx; 를 했는데 아래와 같이 주소가 발생
+> ⓐ th:action="@{|/board/update/{boardIdx}(boardIdx=${board.boardIdx})|}"와 같이 요청을 보냈는데 아래와 같이 주소가 발생
 
 <!-- Image 3 -->
 ![1230_3](https://user-images.githubusercontent.com/111822816/210068667-26330bae-2237-4d87-b64b-70520ab49704.png)
