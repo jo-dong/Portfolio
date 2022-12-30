@@ -1,13 +1,9 @@
-<<<<<<< HEAD
-# Day 11 - 12/26(월)
-=======
+
 # Day 11 - 12/28(수)
->>>>>>> 7546fcd987d27279d090c6bc09278c17a492d349
 
 ## 오늘 한 일
 
 ```
-<<<<<<< HEAD
 🎈 Domain/Controller/Repository가 너무 난잡한 것 같아 다시 정리
 
 🎈 로그인 구현에 관련해 Session/Cookie에 대해 알아봄
@@ -19,14 +15,12 @@
 🎈 Repository : JPA -> Spring Data JPA로 변경
 
 🎈 Board Entity, Service 작성
->>>>>>> 7546fcd987d27279d090c6bc09278c17a492d349
 ```
 
 ---
 
 ## 진행 상황
 
-<<<<<<< HEAD
 > Session/Cookie에 대해 정리해놓은 글과 코드를 보고 참고하여 로그인 코드를 작성하였지만 여전히 잘 모르겠다.. 더 공부가 필요😢
 >
 > > 출처 : https://catsbi.oopy.io/0c27061c-204c-4fbf-acfd-418bdc855fd8
@@ -250,18 +244,15 @@ public class BoardServiceImpl implements BoardService {
 }
 
 ```
->>>>>>> 7546fcd987d27279d090c6bc09278c17a492d349
 
 ---
 
 ## 기타 사항
 
 ```
-<<<<<<< HEAD
 🎈 앞으로 로그인, 체크박스, 게시판 등 남은 작업이 많다.
 
 순서를 잘 정리해서 최대한 효율적으로 작업을 진행해야한다.
 =======
 🎈 어제 적어둔 Spring Security(로그인) 코드 때문에 요청 URI를 바꾸어도 View가 바뀌질 않는다... 우선 로그인 코드를 모두 삭제하고 게시판과 나머지 기능들을 마무리 한 뒤에 로그인 코드를 작성해야겠다.
->>>>>>> 7546fcd987d27279d090c6bc09278c17a492d349
 ```
