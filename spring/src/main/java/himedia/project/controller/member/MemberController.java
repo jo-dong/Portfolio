@@ -1,5 +1,7 @@
 package himedia.project.controller.member;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -53,21 +55,25 @@ public class MemberController {
     public String login(@ModelAttribute Member member, 
     					HttpServletRequest request,
     					Model model) {
-		// 1) 입력된 ID/PW를 가진 회원이 있는지 확인
+		// 입력된 ID/PW를 가진 회원이 있는지 확인
         Member loginMember = service.login(member.getMemberId(), member.getMemberPw());
         
         if(loginMember == null) {
-        	System.out.println("[null] login member : " + loginMember);
-        	System.out.println("[null] member : " + member);
+        	log.info("[null] login member : " + loginMember);
+        	log.info("[null] member : " + member);
         	
             return "redirect:login";
         }
 
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.sessionId, loginMember.getMemberId());
+        session.setMaxInactiveInterval(1800);
 
         model.addAttribute("member", loginMember);
-        System.out.println("성공 member : " + loginMember);
+        log.info("성공 member : {}", loginMember);
+        log.info("maxInactiveInterval : {}", session.getMaxInactiveInterval());
+        log.info("lastAccessTime : {}", new Date(session.getLastAccessedTime()));
+        
         return "redirect:/";
     }
 	

@@ -8,6 +8,7 @@ public interface BoardService {
 	void insertBoard(Board board);
 	List<Board> getBoardList();
 	Board getBoard(Board board);
+	public int hitCnt(Long boardIdx);
 	void updateBoard(Board board);
 	void deleteBoard(Board board);
 }

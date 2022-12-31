@@ -1,6 +1,12 @@
 package himedia.project.domain.member;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -8,7 +14,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
-import lombok.Builder;
+import org.springframework.lang.Nullable;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -67,15 +74,18 @@ values('b1234', '2222', '박아무개', 32, '여성', 'ISTJ', '제주');
 	private Integer memberAge;
 	
 	// gender
+	@Enumerated(value = EnumType.STRING)
 	@Column(name = "gender")
-	private String gender;
+	private Gender gender;
 	
 	// member MBTI
 	@Column(name = "mbti")
 	private String mbti;
 	
 	// member region
+	@ElementCollection(targetClass=String.class)
+	@Nullable
 	@Column(name = "region")
-	private String region;
+	private List<String> region = new ArrayList<>();
 
 }

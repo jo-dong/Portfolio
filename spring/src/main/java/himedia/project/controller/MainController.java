@@ -20,11 +20,6 @@ public class MainController {
 	
 	private final MemberRepository memberRepository;
 	
-//	@GetMapping("/main")
-//	public String main() {
-//		return "main";
-//	}
-	
 	@GetMapping("/")
     public String home(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession(false);

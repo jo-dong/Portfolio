@@ -13,7 +13,7 @@
 		<input type="text" th:value="${board.title}" readonly>
 		<br>
 		<label>내용 : </label>
-		<textarea th:value="${board.content}" readonly></textarea>
+		<input type="text" th:value="${board.content}" readonly>
 		<br>
 		<label>좋아요 : </label>
 		<input type="text" th:value="${board.likes}" readonly>
@@ -34,6 +34,11 @@
 	<div>
 		<input type="button" th:onclick="|location.href='@{/board}'|" value="목록으로">
 		<input type="button" th:onclick="|location.href='@{/board/update/{boardIdx}(boardIdx=${board.boardIdx})}'|" value="게시글 수정">
+		<form th:action="@{|/board/delete/${board.boardIdx}|}" method="post">
+			<input type="hidden" name="_method" value="delete"/>
+			<input type="submit" 
+				   value="게시글 삭제">
+		</form>
 	</div>
 </body>
 </html>
