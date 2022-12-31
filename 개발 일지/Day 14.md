@@ -94,10 +94,12 @@ public String delete(Board board) {
 > 게시글 삭제 전
 
 <!-- Image 3 -->
+![1231_3](https://user-images.githubusercontent.com/111822816/210129364-d58ae6fd-bfb1-493b-8464-a6d2831aa84e.png)
 
 > 게시글 삭제 후
 
 <!-- Image 4 -->
+![1231_4](https://user-images.githubusercontent.com/111822816/210129366-d82cf3a0-ec12-4f14-8efb-773bf34fd9ea.png)
 
 ---
 
@@ -130,10 +132,12 @@ Not supported for DML operations [Update himedia.project.domain.board.Board b Se
 > 조회수 : 52
 
 <!-- Image 1 -->
+![1231_1](https://user-images.githubusercontent.com/111822816/210129355-3660f693-e02a-4c04-b2d5-8c3b3d19a4b1.png)
 
 > 조회수 : 53
 
 <!-- Image 2 -->
+![1231_2](https://user-images.githubusercontent.com/111822816/210129358-cc2fae74-c1d9-4b26-92e1-91ed12eb1cfb.png)
 
 ---
 
