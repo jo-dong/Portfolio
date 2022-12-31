@@ -106,6 +106,7 @@ public class BoardController {
 > /board/update/{boardIdx}
 
 <!-- Image 4 -->
+![1230_4](https://user-images.githubusercontent.com/111822816/210068655-946b7d5a-d458-486d-86fa-ba3b783b2f3a.png)
 
 ---
 
@@ -113,13 +114,15 @@ public class BoardController {
 
 ### 📌 문제 발생
 
-> ⓐ return의 주소에 "redirect:/board/" + boardIdx; 를 했는데 아래와 같이 주소가 발생
+> ⓐ th:action="@{|/board/update/{boardIdx}(boardIdx=${board.boardIdx})|}"와 같이 요청을 보냈는데 아래와 같이 주소가 발생
 
 <!-- Image 3 -->
+![1230_3](https://user-images.githubusercontent.com/111822816/210068667-26330bae-2237-4d87-b64b-70520ab49704.png)
 
 > ⓑ 처음 입력한 form th:action
 
 <!-- Image 2 -->
+![1230_2](https://user-images.githubusercontent.com/111822816/210068671-f1a00735-bab8-407f-bd72-054e51ea89bb.png)
 
 > ⓒ 처음 입력한 update Controller
 
@@ -176,10 +179,12 @@ public String update(@PathVariable Long boardIdx) {
 > /board/2 -> board-detail page로 잘 수정되어 보여주는 모습
 
 <!-- Image 5 -->
+![1230_5](https://user-images.githubusercontent.com/111822816/210068696-40e0c238-2985-40c6-b8e9-121940ac36ce.PNG)
 
 > DB에 수정된 내용과 update_date가 잘 변경된 모습
 
 <!-- Image 6 -->
+![1230_6](https://user-images.githubusercontent.com/111822816/210068709-6e28e364-c04d-4cd9-bc56-07d65077449d.PNG)
 
 ---
 
