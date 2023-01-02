@@ -2,7 +2,10 @@ package himedia.project.domain.member;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import javax.persistence.CollectionTable;
+=======
+>>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -79,7 +82,10 @@ values('b1234', '2222', '박아무개', 32, '여성', 'ISTJ', '제주');
 	private Integer memberAge;
 	
 	// gender
+<<<<<<< HEAD
 	@NotNull(message = "성별을 선택해주세요.")
+=======
+>>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
 	@Enumerated(value = EnumType.STRING)
 	@Column(name = "gender")
 	private Gender gender;
@@ -92,7 +98,10 @@ values('b1234', '2222', '박아무개', 32, '여성', 'ISTJ', '제주');
 	// member region
 	@ElementCollection(targetClass=String.class)
 	@Nullable
+<<<<<<< HEAD
 //	@CollectionTable(name = "region", joinColumns = @JoinColumn(name="id"))
+=======
+>>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
 	@Column(name = "region")
 	private List<String> region = new ArrayList<>();
 

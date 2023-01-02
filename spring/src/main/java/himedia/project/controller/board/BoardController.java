@@ -31,6 +31,7 @@ public class BoardController {
 	
 	// 게시판 목록
 	@GetMapping
+<<<<<<< HEAD
 	public String boardList(Model model, HttpServletRequest request) {
 		
 //		HttpSession session = request.getSession();
@@ -40,6 +41,9 @@ public class BoardController {
 //		log.info(loginMember);
 //		
 //		session.setAttribute("member", loginMember);
+=======
+	public String boardList(Model model) {
+>>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
 		model.addAttribute("boardList", boardService.getBoardList());
 		return "/board/list";
 	}
