@@ -6,17 +6,17 @@
 </head>
 <body>
 	<form th:object="${board}" 
-		  th:action="@{|/board/update/{boardIdx}(boardIdx=${board.boardIdx})|}" 
+		  th:action="@{|/board/update/${board.boardIdx}|}" 
 		  method="post">
 	<div>
 		<label>순번 : </label>
-		<input type="text" th:field="*{boardIdx}" th:value="${board.boardIdx}" disabled readonly>
+		<input type="number" th:field="*{boardIdx}" th:value="${board.boardIdx}" disabled readonly>
 		<br>
 		<label>제목 : </label>
 		<input type="text" th:field="*{title}" th:value="${board.title}">
 		<br>
 		<label>내용 : </label>
-		<textarea th:field="*{content}" th:value="${board.content}"></textarea>
+		<input type="text" name="content" th:field="*{content}" th:value="${board.content}">
 		<br>
 		<label>좋아요 : </label>
 		<input type="text" th:field="*{likes}" th:value="${board.likes}" readonly>
@@ -35,7 +35,7 @@
 		<br>
 	</div>
 	<div>
-		<input type="button" th:onclick="|location.href='@{/board/{boardIdx}(boardIdx=${board.boardIdx})}'|" value="취소">
+		<input type="button" th:onclick="|location.href='@{/board}'|" value="취소">
 		<input type="submit" value="수정 완료">
 	</div>
 	</form>

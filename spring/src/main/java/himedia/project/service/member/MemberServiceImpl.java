@@ -24,6 +24,7 @@ public class MemberServiceImpl implements MemberService {
 	// [회원가입]
 	@Override
 	public void save(Member member) {
+		log.info("password : " + member.getMemberPw());
 		member.setMemberPw(bCryptPasswordEncoder.encode(member.getMemberPw()));
 		memberRepository.save(member);
 		log.info("service : 전달 완료");
@@ -42,10 +43,16 @@ public class MemberServiceImpl implements MemberService {
 			return loginMember.get();
 		}
 		else {	// 비밀번호가 불일치 할 경우
-			System.out.println("[PW 불일치]");
+			log.info("[PW 불일치]");
 			// Error Message 추가
 			return null;
 		}
     }
+	
+	@Override
+	public Member findByMemberId(String memberId) {
+		Member member = memberRepository.findByMemberId(memberId).get();
+		return member;
+	}
 	
 }

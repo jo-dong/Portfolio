@@ -17,9 +17,10 @@ public class SessionManager {
 	private static Map<String, String> store = new ConcurrentHashMap<>();
 
     public void createSession(String memberId, HttpServletResponse response) {
+    	// 보안을 위해 랜덤 값으로 설정
         String token = UUID.randomUUID().toString();
         store.put(token, memberId);
-        Cookie cookie = new Cookie(SessionConst.sessionId, token);
+        Cookie cookie = new Cookie("memberId", token);
         response.addCookie(cookie);
     }
 

@@ -13,17 +13,14 @@ import himedia.project.domain.member.Member;
 import himedia.project.repository.member.MemberRepository;
 import himedia.project.session.SessionConst;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class MainController {
 	
 	private final MemberRepository memberRepository;
-	
-//	@GetMapping("/main")
-//	public String main() {
-//		return "main";
-//	}
 	
 	@GetMapping("/")
     public String home(HttpServletRequest request, Model model) {
@@ -40,7 +37,9 @@ public class MainController {
         if(member == null) {
             return "/member/login";
         }
-
+        
+        log.info("멤버 : " + findMember.get());
+        log.info("멤버 : " + member);
         model.addAttribute("member", member);
         return "main";
     }

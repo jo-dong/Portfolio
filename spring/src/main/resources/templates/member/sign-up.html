@@ -8,41 +8,53 @@
 </head>
 <body>
 	<!-- 회원가입 양식 -->
-	<!-- 추후 유효성 검사 추가 -->
 	<div>
-		<form th:action="@{/member/sign-up}" method="post">
+		<form th:action="@{/member/sign-up}" th:object="${member}" method="post">
 			<table>
+			<!-- 중복 확인 -->
 				<tr>
 					<th>ID :</th>
-					<td><input type="text" name="memberId" id="memberId" required/>
+					<td>
+						<input type="text" th:field="*{memberId}"/>
+						<div th:if="${#fields.hasErrors('memberId')}" th:errors="*{memberId}"></div>
 					</td>
 				</tr>
 				<tr>
 					<th>비밀번호 :</th>
-					<td><input type="password" name="memberPw" id="memberPw"
-						 required/></td>
+					<td>
+						<input type="password" th:field="*{memberPw}"/>
+						<div th:if="${#fields.hasErrors('memberPw')}" th:errors="*{memberPw}"></div>
+					</td>
 				</tr>
-				<!-- 비밀번호 확인 필요 -->
 				<tr>
 					<th>이름 :</th>
-					<td><input type="text" name="memberName" id="memberName"
-						 required/></td>
+					<td>
+						<input type="text" th:field="*{memberName}"/>
+						<div th:if="${#fields.hasErrors('memberName')}" th:errors="*{memberName}"></div>
+					</td>
 				</tr>
 				<tr>
 					<th>나이 :</th>
-					<td><input type="text" name="memberAge" id="memberAge"
-						 required/></td>
+					<td>
+						<input type="text" th:field="*{memberAge}"/>
+						<div th:if="${#fields.hasErrors('memberAge')}" th:errors="*{memberAge}"></div>
+					</td>
 				</tr>
 				<tr>
 					<th>성별 :</th>
-					<td><input type="radio" name="gender" id="gender" value="남성" />남성
-						<input type="radio" name="gender" id="gender" value="여성" />여성</td>
+					<td th:each="gender: ${gender}">
+						<input type="radio" th:field="*{gender}" th:value="${gender.name()}" />
+						<label th:for="${#ids.prev('gender')}" th:text="${gender.description}"
+							>남성</label>
+						<div th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div>
+					</td>
 				</tr>
 				<tr>
 					<th>MBTI :</th>
-					<td><select name="mbti" id="mbti">
+					<td><select th:field="*{mbti}">
 							<option value="" selected>선택</option>
-							<option value="INTJ">INTJ</option>
+							<option th:each="mbti:${mbti}" th:value="${mbti.name()}" th:text="${mbti.name()}"></option>
+							<!-- <option value="INTJ">INTJ</option>
 							<option value="INTP">INTP</option>
 							<option value="ENTJ">ENTJ</option>
 							<option value="ENTP">ENTP</option>
@@ -57,12 +69,27 @@
 							<option value="ISTP">ISTP</option>
 							<option value="ISFP">ISFP</option>
 							<option value="ESTP">ESTP</option>
-							<option value="ESFP">ESFP</option>
-					</select></td>
+							<option value="ESFP">ESFP</option> -->
+					</select>
+					<div th:if="${#fields.hasErrors('mbti')}" th:errors="*{mbti}"></div>
+				</td>
 				</tr>
 				<tr>
+				<!-- 수정 -->
 					<th>거주지 :</th>
-					<td><input type="text" name="region" id="region" required />
+					<td><select th:field="*{region}">
+							<option value="" selected>선택</option>
+							<option th:each="region:${region}" th:value="${region.key}" th:text="${region.value}"></option>
+							<!-- <option value="SEOUL">서울</option>
+							<option value="INCHEON">인천</option>
+							<option value="DAEGU">대구</option>
+							<option value="GWANGJU">광주</option>
+							<option value="DAEJEON">대전</option>
+							<option value="ULSAN">울산</option>
+							<option value="BUSAN">부산</option>
+							<option value="JEJU">제주</option> -->
+					</select>
+					<div th:if="${#fields.hasErrors('region')}" th:errors="*{region}"></div>
 					</td>
 				</tr>
 			</table>

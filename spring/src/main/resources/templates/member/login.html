@@ -8,17 +8,14 @@
 	<h1>로그인하기</h1>
 	<form th:action="@{/member/login}" method="post">
 		<div>
-			<label for="memberId">로그인 ID</label> <input type="text"
-				name="memberId" />
+			<label for="memberId">로그인 ID</label> 
+			<input type="text" name="memberId" />
+			<!-- <p th:if="${#fields.hasErrors('memberId')}" th:errors="*{memberId}"></p> -->
 		</div>
 		<div>
-			<label for="memberPw">비밀번호</label> <input type="password"
-				name="memberPw" />
-		</div>
-		<div th:if="error">
-			<p id="valid" style="color: red; font-size: 12px;">
-				<a th:text="${exception}"></a>
-			</p>
+			<label for="memberPw">비밀번호</label> 
+			<input type="password" name="memberPw" />
+			<!-- <p th:if="${#fields.hasErrors('memberPw')}" th:errors="*{memberPw}"></p> -->
 		</div>
 		<div>
 			<button type="submit">로그인</button>

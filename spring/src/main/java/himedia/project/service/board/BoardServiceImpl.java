@@ -30,6 +30,11 @@ public class BoardServiceImpl implements BoardService {
 	public Board getBoard(Board board) {
 		return boardRepository.findById(board.getBoardIdx()).get();
 	}
+	
+	@Override
+	public int hitCnt(Long boardIdx) {
+		return boardRepository.updateHitCnt(boardIdx);
+	}
 
 	@Override
 	public void updateBoard(Board board) {
@@ -40,5 +45,5 @@ public class BoardServiceImpl implements BoardService {
 	public void deleteBoard(Board board) {
 		boardRepository.deleteById(board.getBoardIdx());
 	}
-
+	
 }
