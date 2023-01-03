@@ -15,6 +15,7 @@
 > 게시판 Paging 구현
 
 <!-- Image 1 -->
+![0103_1](https://user-images.githubusercontent.com/111822816/210325019-36f37bf8-1e14-4eb9-9497-0f6ebc8d6fd0.png)
 
 > Controller
 >
@@ -23,8 +24,8 @@
 ```java
 	@GetMapping
 	public String boardList(@PageableDefault(page=0, size=10) Pageable pageable,
-							@RequestParam(value = "page", required = false) Integer page,
-							Model model) {
+				@RequestParam(value = "page", required = false) Integer page,
+				Model model) {
 		Page<Board> list = boardService.findAllPage(pageable);
 
 		int currentPage = list.getPageable().getPageNumber() + 1;
@@ -71,6 +72,7 @@
 > 댓글 기능 약식으로 view 작성
 
 <!-- Image 2 -->
+![0103_2](https://user-images.githubusercontent.com/111822816/210325031-f64291d4-680b-4468-a647-900c71bbb51d.png)
 
 ---
 
