@@ -1,12 +1,9 @@
 package himedia.project.controller.member;
 
 import java.util.Date;
-<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-=======
->>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -79,31 +76,16 @@ public class MemberController {
         
         if(loginMember == null) {
         	log.info("[null] login member : " + loginMember);
-<<<<<<< HEAD
         	model.addAttribute("member", loginMember);
-=======
-        	log.info("[null] member : " + member);
-        	
->>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
             return "redirect:login";
         }
 
         HttpSession session = request.getSession();
-<<<<<<< HEAD
-        session.setAttribute("memberId", loginMember.getMemberId());
-        session.setAttribute("memberName", loginMember.getMemberName());
-=======
         session.setAttribute(SessionConst.sessionId, loginMember.getMemberId());
-        session.setMaxInactiveInterval(1800);
->>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
 
         model.addAttribute("member", loginMember);
         log.info("성공 member : {}", loginMember);
         log.info("maxInactiveInterval : {}", session.getMaxInactiveInterval());
-<<<<<<< HEAD
-=======
-        log.info("lastAccessTime : {}", new Date(session.getLastAccessedTime()));
->>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
         
         return "redirect:/";
     }

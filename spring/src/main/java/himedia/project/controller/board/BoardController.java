@@ -1,8 +1,9 @@
 package himedia.project.controller.board;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,12 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import himedia.project.domain.board.Board;
-import himedia.project.domain.member.Member;
 import himedia.project.service.board.BoardService;
-import himedia.project.service.member.MemberService;
-import himedia.project.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,25 +25,29 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class BoardController {
 	
-	private final MemberService memberService;
+//	private final MemberService memberService;
 	private final BoardService boardService;
 	
 	// 게시판 목록
 	@GetMapping
-<<<<<<< HEAD
-	public String boardList(Model model, HttpServletRequest request) {
+	public String boardList(@PageableDefault(page=0, size=10) Pageable pageable,
+							@RequestParam(value = "page", required = false) Integer page,
+							Model model) {
+		Page<Board> list = boardService.findAllPage(pageable);
 		
-//		HttpSession session = request.getSession();
-//		
-//		String loginMember = (String) session.getAttribute(SessionConst.sessionName);
+		// pageable은 0부터 시작 -> 1을 처리하려면 +1
+		int currentPage = list.getPageable().getPageNumber() + 1;
 		
-//		log.info(loginMember);
-//		
-//		session.setAttribute("member", loginMember);
-=======
-	public String boardList(Model model) {
->>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
-		model.addAttribute("boardList", boardService.getBoardList());
+		// 제일 앞페이지 : -1이 들어가지 않도록 max -> 두 수 비교 후 대입
+		int startPage = Math.max(currentPage - 4, 1);
+		int endPage = Math.min(currentPage + 9, list.getTotalPages());
+		
+		model.addAttribute("list", list);
+		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("endPage", endPage);
+		
+//		model.addAttribute("boardList", boardService.getBoardList());
 		return "/board/list";
 	}
 	

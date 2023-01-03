@@ -1,44 +1,76 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body th:each="board:${boardDetail}">
-	<div>
-		<label>순번 : </label>
-		<input type="text" th:value="${board.boardIdx}" readonly>
-		<br>
-		<label>제목 : </label>
-		<input type="text" th:value="${board.title}" readonly>
-		<br>
-		<label>내용 : </label>
-		<input type="text" th:value="${board.content}" readonly>
-		<br>
-		<label>좋아요 : </label>
-		<input type="text" th:value="${board.likes}" readonly>
-		<br>
-		<label>싫어요 : </label>
-		<input type="text" th:value="${board.dislikes}" readonly>
-		<br>
-		<label>작성 시간 : </label>
-		<input type="text" th:value="${board.createDate}" readonly>
-		<br>
-		<label>수정 시간 : </label>
-		<input type="text" th:value="${board.updateDate}" readonly>
-		<br>
-		<label>조회수 : </label>
-		<input type="text" th:value="${board.hitCnt}" readonly>
-		<br>
-	</div>
-	<div>
-		<input type="button" th:onclick="|location.href='@{/board}'|" value="목록으로">
-		<input type="button" th:onclick="|location.href='@{/board/update/{boardIdx}(boardIdx=${board.boardIdx})}'|" value="게시글 수정">
-		<form th:action="@{|/board/delete/${board.boardIdx}|}" method="post">
-			<input type="hidden" name="_method" value="delete"/>
-			<input type="submit" 
-				   value="게시글 삭제">
-		</form>
-	</div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body th:each="board:${boardDetail}">
+    <div>
+      <label>순번 : </label>
+      <input type="text" th:value="${board.boardIdx}" readonly />
+      <br />
+      <label>제목 : </label>
+      <input type="text" th:value="${board.title}" readonly />
+      <br />
+      <label>내용 : </label>
+      <input type="text" th:value="${board.content}" readonly />
+      <br />
+      <label>좋아요 : </label>
+      <input type="text" th:value="${board.likes}" readonly />
+      <br />
+      <label>싫어요 : </label>
+      <input type="text" th:value="${board.dislikes}" readonly />
+      <br />
+      <label>작성 시간 : </label>
+      <input type="text" th:value="${board.createDate}" readonly />
+      <br />
+      <label>수정 시간 : </label>
+      <input type="text" th:value="${board.updateDate}" readonly />
+      <br />
+      <label>조회수 : </label>
+      <input type="text" th:value="${board.hitCnt}" readonly />
+      <br />
+    </div>
+    <div>
+      <input
+        type="button"
+        th:onclick="|location.href='@{/board}'|"
+        value="목록으로"
+      />
+      <input
+        type="button"
+        th:onclick="|location.href='@{/board/update/{boardIdx}(boardIdx=${board.boardIdx})}'|"
+        value="게시글 수정"
+      />
+      <form th:action="@{|/board/delete/${board.boardIdx}|}" method="post">
+        <input type="hidden" name="_method" value="delete" />
+        <input type="submit" value="게시글 삭제" />
+      </form>
+    </div>
+    <br /><br />
+    <div>
+      <form action="" method="post">
+        <fieldset>
+          <dl>
+            <dt>
+              <label for="memberName">작성자 : </label>
+            </dt>
+            <dd>
+              <input type="text" name="memberName" />
+            </dd>
+            <dt>
+              <label for="comment">댓글 :</label>
+            </dt>
+            <dd>
+              <textarea name="comment"></textarea>
+            </dd>
+          </dl>
+        </fieldset>
+      </form>
+    </div>
+
+    <legend>
+      아직 댓글이 없습니다.
+    </legend>
+  </body>
 </html>

@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.util.Assert;
@@ -31,14 +30,6 @@ public class Comment extends BaseTime {
 	
 	@Lob @Column(nullable = false)
 	private String content;
-	
-	@Column(updatable = false)
-	@ColumnDefault("0")
-	private Long likes;
-	
-	@Column(updatable = false)
-	@ColumnDefault("0")
-	private Long dislikes;
 	
 	@Builder
 	public Comment(Long commentIdx, String content) {

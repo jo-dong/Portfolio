@@ -20,7 +20,7 @@ public class SessionManager {
     	// 보안을 위해 랜덤 값으로 설정
         String token = UUID.randomUUID().toString();
         store.put(token, memberId);
-        Cookie cookie = new Cookie("memberId", token);
+        Cookie cookie = new Cookie(SessionConst.sessionId, token);
         response.addCookie(cookie);
     }
 

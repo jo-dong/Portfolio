@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import himedia.project.domain.member.Gender;
-<<<<<<< HEAD
 import himedia.project.domain.member.Mbti;
-=======
->>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
 import himedia.project.domain.member.Member;
 import himedia.project.service.ideal.IdealService;
 import lombok.RequiredArgsConstructor;
@@ -43,14 +40,11 @@ public class IdealController {
 		return region;
 	}
 	
-<<<<<<< HEAD
 	@ModelAttribute("mbti")
 	public Mbti[] mbti() {
 		return Mbti.values();
 	}
 	
-=======
->>>>>>> f235dcb242764c01c6b88382bdf22d8104db2f61
 	@ModelAttribute("gender")
 	public Gender[] gender() {
 		return Gender.values();
