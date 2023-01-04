@@ -16,9 +16,8 @@
 	// 게시글 상세
 	@GetMapping("/{boardIdx}")
 	public String board(@PathVariable(value="boardIdx", required = false) Long boardIdx,
-						@ModelAttribute Board board,
-						@ModelAttribute Comment comment,
-						Model model) {
+			    @ModelAttribute Board board,
+			    Model model) {
 
 		Board boardDetail = boardService.getBoard(board);
 
@@ -41,7 +40,7 @@
 	// comment
 	@PostMapping("/{boardIdx}")
 	public String comment(@PathVariable(name = "boardIdx", required = false) Long boardIdx,
-						  Comment comment) {
+			      Comment comment) {
 		log.info("insertComment 실행 시작");
 		log.info("boardIdx -> {}", boardIdx);
 		log.info("memberName -> {}", comment.getMemberName());
@@ -138,8 +137,8 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 	// comment
 	@PostMapping("/{boardIdx}")
 	public String comment(@PathVariable(name = "boardIdx", required = false) Long boardIdx,
-						  @ModelAttribute Comment comment) {    // @ModelAttribute Annotation을 사용했더니 binding이 되질 않고
-                                                                // 계속 log를 찍어봐도 null이 출력되었다.
+			      @ModelAttribute Comment comment) {    // @ModelAttribute Annotation을 사용했더니 binding이 되질 않고
+                                                                    // 계속 log를 찍어봐도 null이 출력되었다.
 		log.info("insertComment 실행 시작");
 		log.info("boardIdx -> {}", boardIdx);
 		log.info("memberName -> {}", comment.getMemberName());  // null
