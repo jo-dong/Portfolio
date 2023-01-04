@@ -1,16 +1,11 @@
 package himedia.project.domain.board;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -20,8 +15,9 @@ import org.springframework.util.Assert;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Getter
+@Getter @Setter
 @Entity
 @DynamicInsert
 @DynamicUpdate
@@ -29,13 +25,12 @@ import lombok.NoArgsConstructor;
 @Table(name = "comment")
 public class Comment extends BaseTime {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "comment_idx")
 	private Long commentIdx;
 	
-	@ManyToOne(cascade = CascadeType.REMOVE)
-	@JoinColumn(name = "board_idx")
-	private Board boardIdx;
+	@Column(name = "board_idx")
+	private Long boardIdx;
 	
 	@Column(name = "member_name")
 	private String memberName;

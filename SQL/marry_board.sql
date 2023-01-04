@@ -37,14 +37,20 @@ values(1, '안녕하세요', '안녕하세요~🎃', 30, 2, now(), sysdate(), 50
 insert into marry.board(title, content, likes, dislikes, create_date, update_date, hit_cnt)
 values('여보세요🎪', '내용내용🎈', 30, 2, now(), sysdate(), 40);
 
-insert into comment
+insert into marry.comment
 values
-(1, 1, '댓글댓글', '홍길동', now());
+(1, 1, '댓글댓글', '홍길동', sysdate(), now());
 
 select * from marry.member_info;
 
 select * from marry.board;
 select * from comment;
 
+select count(board_idx) as '댓글 수'
+from comment
+where board_idx = 1;
+
 delete from board
 where board_idx = 6;
+
+21:27:53	insert into comment values (1, 1, '댓글댓글', '홍길동', now())	Error Code: 1136. Column count doesn't match value count at row 1	0.000 sec

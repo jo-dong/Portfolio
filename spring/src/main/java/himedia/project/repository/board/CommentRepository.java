@@ -14,9 +14,8 @@ import himedia.project.domain.board.Comment;
  * 댓글 Repository
  */
 public interface CommentRepository extends JpaRepository<Comment, Long> {
-	
 	@Transactional
-//	@Modifying
+	@Modifying
 	@Query("select c from Comment c where c.boardIdx = :boardIdx order by c.commentIdx")
 	public List<Comment> findCommentById(@Param("boardIdx") Long boardIdx);
 }

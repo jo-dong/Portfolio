@@ -82,7 +82,12 @@ public class MemberController {
 
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.sessionId, loginMember.getMemberId());
-
+        
+        // 로그인 연동 시간 남으면 해보기
+//        session.setAttribute("sessionUser", loginMember);
+//        
+//        Member userInfo = (Member) session.getAttribute("sessionUser");
+        
         model.addAttribute("member", loginMember);
         log.info("성공 member : {}", loginMember);
         log.info("maxInactiveInterval : {}", session.getMaxInactiveInterval());

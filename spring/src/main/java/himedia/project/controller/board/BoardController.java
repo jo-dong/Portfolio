@@ -58,6 +58,7 @@ public class BoardController {
 	@GetMapping("/{boardIdx}")
 	public String board(@PathVariable(value="boardIdx", required = false) Long boardIdx,
 						@ModelAttribute Board board,
+						@ModelAttribute Comment comment,
 						Model model) {
 		
 		Board boardDetail = boardService.getBoard(board);
@@ -118,11 +119,15 @@ public class BoardController {
 	// comment
 	@PostMapping("/{boardIdx}")
 	public String comment(@PathVariable(name = "boardIdx", required = false) Long boardIdx, 
-						  @ModelAttribute Comment comment) {
+						  Comment comment) {
 		log.info("insertComment 실행 시작");
 		log.info("boardIdx -> {}", boardIdx);
+		log.info("memberName -> {}", comment.getMemberName());
 		log.info("content -> {}", comment.getContent());
+		log.info("createDate -> {}", comment.getCreateDate());
+				
 		boardService.insertComment(comment);
+		
 		log.info("insertComment 실행 완료");
 		log.info("boardIdx -> {}", boardIdx);
 		log.info("content -> {}", comment.getContent());

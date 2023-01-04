@@ -12,10 +12,12 @@ import himedia.project.domain.board.Comment;
 import himedia.project.repository.board.BoardRepository;
 import himedia.project.repository.board.CommentRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class BoardServiceImpl implements BoardService {
 	
 	private final BoardRepository boardRepository;
@@ -56,7 +58,7 @@ public class BoardServiceImpl implements BoardService {
 		return boardRepository.findAll(pageable);
 	}
 	
-	// comment
+	// comment -------------------------------------------
 	@Override
 	public void insertComment(Comment comment) {
 		commentRepository.save(comment);
