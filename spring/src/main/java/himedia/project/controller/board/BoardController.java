@@ -1,8 +1,9 @@
 package himedia.project.controller.board;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import himedia.project.domain.board.Board;
+import himedia.project.domain.board.Comment;
 import himedia.project.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -38,8 +40,9 @@ public class BoardController {
 		// pageable은 0부터 시작 -> 1을 처리하려면 +1
 		int currentPage = list.getPageable().getPageNumber() + 1;
 		
-		// 제일 앞페이지 : -1이 들어가지 않도록 max -> 두 수 비교 후 대입
+		// ex)현재 페이지 6 : 6페이지를 누르면 1페이지가 눈에 보이지 않게 -4
 		int startPage = Math.max(currentPage - 4, 1);
+		// ex)현재 페이지 1 : 1페이지에선 10페이지까지 눈에 보임
 		int endPage = Math.min(currentPage + 9, list.getTotalPages());
 		
 		model.addAttribute("list", list);
@@ -62,11 +65,15 @@ public class BoardController {
 		// 조회수 1 증가
 		boardService.hitCnt(boardIdx);
 		
-		log.info("boardDetail -> {}", boardDetail.getBoardIdx());
-		log.info("boardDetail -> {}", boardDetail.getTitle());
-		log.info("boardDetail -> {}", boardDetail.getContent());
+		log.info("getComment 실행 시작");
+		
+		// 댓글 불러오기
+		List<Comment> commentList = boardService.getComment(boardIdx);
+		
+		log.info("getComment 실행 완료");
 		
 		model.addAttribute("boardDetail", boardDetail);
+		model.addAttribute("comment", commentList);
 		return "/board/board-detail";
 	}
 	
@@ -108,4 +115,17 @@ public class BoardController {
 		return "redirect:/board";
 	}
 	
+	// comment
+	@PostMapping("/{boardIdx}")
+	public String comment(@PathVariable(name = "boardIdx", required = false) Long boardIdx, 
+						  @ModelAttribute Comment comment) {
+		log.info("insertComment 실행 시작");
+		log.info("boardIdx -> {}", boardIdx);
+		log.info("content -> {}", comment.getContent());
+		boardService.insertComment(comment);
+		log.info("insertComment 실행 완료");
+		log.info("boardIdx -> {}", boardIdx);
+		log.info("content -> {}", comment.getContent());
+		return "redirect:/board/"+boardIdx;
+	}
 }

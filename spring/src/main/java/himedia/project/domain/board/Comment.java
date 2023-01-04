@@ -1,11 +1,16 @@
 package himedia.project.domain.board;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -27,6 +32,13 @@ public class Comment extends BaseTime {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "comment_idx")
 	private Long commentIdx;
+	
+	@ManyToOne(cascade = CascadeType.REMOVE)
+	@JoinColumn(name = "board_idx")
+	private Board boardIdx;
+	
+	@Column(name = "member_name")
+	private String memberName;
 	
 	@Lob @Column(nullable = false)
 	private String content;

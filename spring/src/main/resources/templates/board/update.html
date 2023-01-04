@@ -18,11 +18,8 @@
 		<label>내용 : </label>
 		<input type="text" name="content" th:field="*{content}" th:value="${board.content}">
 		<br>
-		<label>좋아요 : </label>
-		<input type="text" th:field="*{likes}" th:value="${board.likes}" readonly>
-		<br>
-		<label>싫어요 : </label>
-		<input type="text" th:field="*{dislikes}" th:value="${board.dislikes}" readonly>
+		<label>작성자 : </label>
+		<input type="text" th:field="*{memberName}" th:value="${board.memberName}" readonly>
 		<br>
 		<label>작성 시간 : </label>
 		<input type="text" th:field="*{createDate}" th:value="${board.createDate}" readonly>

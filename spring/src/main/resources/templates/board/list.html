@@ -13,8 +13,7 @@
           <tr>
             <th>순번</th>
             <th>제목</th>
-            <th>좋아요</th>
-            <th>싫어요</th>
+            <th>작성자</th>
             <th>작성 시간</th>
             <th>수정 시간</th>
             <th>조회수</th>
@@ -31,8 +30,7 @@
                 >제목</a
               >
             </td>
-            <td th:text="${board.likes}">좋아요</td>
-            <td th:text="${board.dislikes}">싫어요</td>
+            <td th:text="${board.memberName}">작성자</td>
             <td th:text="${board.createDate}">작성 시간</td>
             <td th:text="${board.updateDate}">수정 시간</td>
             <td th:text="${board.hitCnt}">조회수</td>

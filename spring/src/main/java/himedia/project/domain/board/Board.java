@@ -48,22 +48,14 @@ public class Board extends BaseTime {
 	@Column(name = "board_idx", nullable = false)
 	private Long boardIdx;
 	
+	@Column(name = "member_name")
+	private String memberName;
+	
 	@Column(length = 250, nullable = false)
 	private String title;
 	
 	@Lob @Column(nullable = false)
 	private String content;
-	
-	// 로그인 해결 후 적용
-//	private String memberName;
-	
-	@Column(updatable = false)
-	@ColumnDefault("0")
-	private Long likes;
-	
-	@Column(updatable = false)
-	@ColumnDefault("0")
-	private Long dislikes;
 	
 	@Column(updatable = false, name = "hit_cnt")
 	@ColumnDefault("0")

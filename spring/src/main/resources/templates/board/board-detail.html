@@ -15,11 +15,8 @@
       <label>내용 : </label>
       <input type="text" th:value="${board.content}" readonly />
       <br />
-      <label>좋아요 : </label>
-      <input type="text" th:value="${board.likes}" readonly />
-      <br />
-      <label>싫어요 : </label>
-      <input type="text" th:value="${board.dislikes}" readonly />
+      <label>작성자 : </label>
+      <input type="text" th:value="${board.memberName}" readonly />
       <br />
       <label>작성 시간 : </label>
       <input type="text" th:value="${board.createDate}" readonly />
@@ -48,8 +45,27 @@
       </form>
     </div>
     <br /><br />
+    
+    <h5>댓글을 남기세요</h5>
+    
     <div>
-      <form action="" method="post">
+    	<table>
+    		<tr>
+    			<th>작성자</th>
+    			<th>내용</th>
+    			<th>작성 시간</th>
+    		</tr>
+    		<tr th:each="comment:${comment}">
+    			<td th:text="${comment.memberName}">아직</td>
+    			<td th:text="${comment.content}">댓글이</td>
+    			<td th:text="${comment.createDate}">없습니다.</td>
+    		</tr>
+    	</table>
+    </div>
+    
+    <div>
+      <form th:action="@{|/board/${board.boardIdx}|}" method="post">
+      	<input type="hidden" name="boardIdx" th:value="*{board.boardIdx}" />
         <fieldset>
           <dl>
             <dt>
@@ -59,18 +75,15 @@
               <input type="text" name="memberName" />
             </dd>
             <dt>
-              <label for="comment">댓글 :</label>
+              <label for="content">댓글 :</label>
             </dt>
             <dd>
-              <textarea name="comment"></textarea>
+              <input type="text" name="content">
             </dd>
           </dl>
+          <input type="submit" value="작성">
         </fieldset>
       </form>
     </div>
-
-    <legend>
-      아직 댓글이 없습니다.
-    </legend>
   </body>
 </html>
