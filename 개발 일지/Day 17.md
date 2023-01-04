@@ -158,5 +158,3 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
 
 <!-- Image 1 -->
 ![0105_1](https://user-images.githubusercontent.com/111822816/210561733-de942c9e-bf93-45a0-90a2-ab372df9e800.png)
-
-> 댓글 수 기능 추가하기
