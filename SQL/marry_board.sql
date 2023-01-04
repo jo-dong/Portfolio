@@ -1,3 +1,7 @@
+show databases;
+
+create database marry;
+
 use marry;
 
 show tables;
@@ -9,9 +13,7 @@ create table board (
 	board_idx bigint NOT NULL auto_increment,
     title varchar(255) NOT NULL,
     content longtext NOT NULL,
-  # 로그인 해결 후 member_name 추가
-    likes int default 0,
-    dislikes int default 0,    
+    member_name varchar(20) NOT NULL,  
     create_date datetime,
     update_date datetime,
     hit_cnt int default 0,
@@ -22,11 +24,8 @@ create table comment (
 	comment_idx bigint NOT NULL auto_increment,
     board_idx bigint NOT NULL,
     content longtext NOT NULL,
-    likes int default 0,
-    dislikes int default 0,
-  # 로그인 해결 후 member_name(FK) 추가
+    member_name varchar(20) NOT NULL,
 	create_date datetime,
-    update_date datetime,
     primary key(comment_idx),
     foreign key(board_idx) references board(board_idx)
     on delete cascade
@@ -38,7 +37,12 @@ values(1, '안녕하세요', '안녕하세요~🎃', 30, 2, now(), sysdate(), 50
 insert into marry.board(title, content, likes, dislikes, create_date, update_date, hit_cnt)
 values('여보세요🎪', '내용내용🎈', 30, 2, now(), sysdate(), 40);
 
+insert into comment
+values
+(1, 1, '댓글댓글', '홍길동', now());
+
 select * from marry.member_info;
+
 select * from marry.board;
 select * from comment;
 
