@@ -1,7 +1,9 @@
 package himedia.project.controller.ideal;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import himedia.project.domain.member.Gender;
 import himedia.project.domain.member.Mbti;
 import himedia.project.domain.member.Member;
+import himedia.project.domain.member.MemberAge;
+import himedia.project.domain.member.Region;
 import himedia.project.service.ideal.IdealService;
+import himedia.project.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -27,17 +32,13 @@ public class IdealController {
 	private final IdealService idealService;
 	
 	@ModelAttribute("region")
-	public Map<String, String> regions() {
-		Map<String, String> region = new LinkedHashMap<>();
-		region.put("SEOUL", "서울");
-		region.put("INCHEON", "인천");
-		region.put("DAEGU", "대구");
-		region.put("GWANGJU", "광주");
-		region.put("DAEJEON", "대전");
-		region.put("ULSAN", "울산");		
-		region.put("BUSAN", "부산");
-		region.put("JEJU", "제주");
-		return region;
+	public Region[] regions() {
+		return Region.values();
+	}
+	
+	@ModelAttribute("memberAge")
+	public MemberAge[] memberAges() {
+		return MemberAge.values();
 	}
 	
 	@ModelAttribute("mbti")
@@ -53,20 +54,57 @@ public class IdealController {
 	@GetMapping("/check")
 	public String check(Model model) {
 		model.addAttribute("member", new Member());
-		return "ideal/check";
+		return "ideal/check-ideal";
 	}
 	
-	// 미완 - Entity(를 List로 짜야하는것인지)랑 Table
-	// 체크박스 데이터 자동으로 넘어간다고 하는데 메소드 어케 짜야하는지
 	@PostMapping("/check")
 	public String checkIdeal(@ModelAttribute Member member,
-							 RedirectAttributes redirectAttributes) {
+							 HttpServletRequest request,
+							 RedirectAttributes redirectAttributes,
+							 Model model) {
+		HttpSession session = request.getSession();
+		Member loginMember = (Member)session.getAttribute(SessionConst.sessionId);
+		
+		
+		log.info("session ==> {}", loginMember.getGender());
 		log.info("member.regions ==> {}", member.getRegion());
-		log.info("member.gender ==> {}", member.getGender());
+		log.info("member.memberAge ==> {}", member.getMemberAge());
 		log.info("member.mbti ==> {}", member.getMbti());
 		
-		
-		
+		// 로그인 된 회원이 남성일 경우
+		if(loginMember.getGender().equals(Gender.M)) {
+			log.info("M 실행완료");
+			List<Member> femaleList = idealService.getIdealMale(member.getMemberAge(), 
+																  member.getRegion(), 
+																  member.getMbti());
+			log.info("member.getMemberAge -> {}", femaleList.get(0).getMemberAge());
+			log.info("member.getMemberName -> {}", femaleList.get(0).getMemberName());
+			model.addAttribute("list", femaleList);
+			model.addAttribute("member", loginMember);
+			return "redirect:/ideal/result";
+		}
+		// 로그인 된 회원이 여성일 경우
+		List<Member> maleList = idealService.getIdealFemale(member.getMemberAge(),
+															  member.getRegion(),
+															  member.getMbti());
+		model.addAttribute("list", maleList);
+		model.addAttribute("member", loginMember);
 		return "redirect:/ideal/result";
 	}
+	
+	@GetMapping("/result")
+	public String result() {
+		return "ideal/result";
+	}
+	
+	@GetMapping("/statistic")
+	public String statistic(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute(SessionConst.sessionId);
+		
+		model.addAttribute("member", member);
+		return "ideal/statistic";
+	}
+	
+	
 }

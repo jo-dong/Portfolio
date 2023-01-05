@@ -14,7 +14,8 @@
 			</tr>
 			<tr>
 				<th><label for="memberName">작성자 : </label></th>
-				<td><input type="text" name="memberName"></td>
+				<td><input type="text" name="memberName"
+						th:value="${member.memberName}" readonly></td>
 			</tr>
 			<tr>
 				<th><label for="content">내용 : </label></th>

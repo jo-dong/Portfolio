@@ -5,11 +5,14 @@ import java.util.List;
 import himedia.project.domain.member.Gender;
 import himedia.project.domain.member.Mbti;
 import himedia.project.domain.member.Member;
+import himedia.project.domain.member.MemberAge;
+import himedia.project.domain.member.Region;
 
 public interface IdealService {
-	public Member getIdeal(Member member);
-	public List<Member> findByGender(Gender gender);
-	public List<Member> findByMemberAge(Integer memberAge);
-	public List<Member> findByRegion(List<String> region);
-	public List<Member> findByMbti(Mbti mbti);
+	public List<Member> getIdealMale(MemberAge memberAge,
+									 Region region,
+									 Mbti mbti);
+	public List<Member> getIdealFemale(MemberAge memberAge,
+									   Region region,
+									   Mbti mbti);
 }

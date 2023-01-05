@@ -1,16 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<form action="" method="post">
-		<table>
-			<tr>
-				<td></td>
-			</tr>
-		</table>
-	</form>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+  </head>
+  <body>
+    <form th:action="@{|/ideal/check|}" method="post" th:object="${member}">
+      <table>
+        <tr>
+          <th>
+            <div>연령대 :</div>
+          </th>
+          <td th:each="memberAge:${memberAge}">
+            <input
+              type="radio"
+              id="memberAge"
+              th:field="*{memberAge}"
+              th:value="${memberAge.name()}"
+            />
+            <label
+              th:for="${#ids.seq('memberAge')}"
+              th:text="${memberAge.description}"
+            ></label>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <div>거주지 :</div>
+          </th>
+          <td th:each="region:${region}">
+            <input
+              type="radio"
+              id="region"
+              th:field="*{region}"
+              th:value="${region.name()}"
+            />
+            <label
+              th:for="${#ids.seq('region')}"
+              th:text="${region.description}"
+            ></label>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <div>MBTI :</div>
+          </th>
+          <td th:each="mbti:${mbti}">
+            <input
+              type="radio"
+              id="mbti"
+              th:field="*{mbti}"
+              th:value="${mbti.name()}"
+            />
+            <label
+              th:for="${#ids.seq('mbti')}"
+              th:text="${mbti.name()}"
+            ></label>
+          </td>
+        </tr>
+      </table>
+      <input type="submit" value="이상형 검색" />
+    </form>
+  </body>
 </html>

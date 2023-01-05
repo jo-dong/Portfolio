@@ -2,6 +2,9 @@ package himedia.project.controller.board;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -17,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import himedia.project.domain.board.Board;
 import himedia.project.domain.board.Comment;
+import himedia.project.domain.member.Member;
 import himedia.project.service.board.BoardService;
+import himedia.project.session.SessionConst;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -34,7 +39,12 @@ public class BoardController {
 	@GetMapping
 	public String boardList(@PageableDefault(page=0, size=10) Pageable pageable,
 							@RequestParam(value = "page", required = false) Integer page,
+							HttpServletRequest request,
 							Model model) {
+		// 로그인/게시판 연동
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute(SessionConst.sessionId);
+		
 		Page<Board> list = boardService.findAllPage(pageable);
 		
 		// pageable은 0부터 시작 -> 1을 처리하려면 +1
@@ -45,12 +55,11 @@ public class BoardController {
 		// ex)현재 페이지 1 : 1페이지에선 10페이지까지 눈에 보임
 		int endPage = Math.min(currentPage + 9, list.getTotalPages());
 		
+		model.addAttribute("member", member);
 		model.addAttribute("list", list);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
-		
-//		model.addAttribute("boardList", boardService.getBoardList());
 		return "/board/list";
 	}
 	
@@ -58,7 +67,7 @@ public class BoardController {
 	@GetMapping("/{boardIdx}")
 	public String board(@PathVariable(value="boardIdx", required = false) Long boardIdx,
 						@ModelAttribute Board board,
-						@ModelAttribute Comment comment,
+						HttpServletRequest request,
 						Model model) {
 		
 		Board boardDetail = boardService.getBoard(board);
@@ -73,6 +82,12 @@ public class BoardController {
 		
 		log.info("getComment 실행 완료");
 		
+		HttpSession session = request.getSession();
+		Member member = (Member)session.getAttribute(SessionConst.sessionId);
+		
+		log.info("member -> {}", member.getMemberName());
+		
+		model.addAttribute("member", member);
 		model.addAttribute("boardDetail", boardDetail);
 		model.addAttribute("comment", commentList);
 		return "/board/board-detail";
@@ -80,7 +95,11 @@ public class BoardController {
 	
 	// insert
 	@GetMapping("/write")
-	public String insertBoard() {
+	public String insertBoard(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute(SessionConst.sessionId);
+		log.info("member" + member.getMemberName());
+		model.addAttribute("member", member);
 		return "/board/write";
 	}
 	

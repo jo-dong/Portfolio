@@ -29,9 +29,9 @@ public class MainController {
         if(session == null) {
             return "/member/login";
         }
-
-        String memberId = (String)session.getAttribute(SessionConst.sessionId);
-        Optional<Member> findMember = memberRepository.findByMemberId(memberId);
+        log.info("여기 잘못");
+        Member memberSession = (Member)session.getAttribute(SessionConst.sessionId);
+        Optional<Member> findMember = memberRepository.findByMemberId(memberSession.getMemberId());
         Member member = findMember.orElse(null);
 
         if(member == null) {
@@ -43,10 +43,5 @@ public class MainController {
         model.addAttribute("member", member);
         return "main";
     }
-	
-//	@GetMapping("/logout")
-//	public String logout() {
-//		
-//	}
 	
 }
