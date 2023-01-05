@@ -2,7 +2,6 @@ package himedia.project.service.ideal;
 
 import java.util.List;
 
-import himedia.project.domain.member.Gender;
 import himedia.project.domain.member.Mbti;
 import himedia.project.domain.member.Member;
 import himedia.project.domain.member.MemberAge;

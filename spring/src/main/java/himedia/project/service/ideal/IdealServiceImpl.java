@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import himedia.project.domain.member.Gender;
 import himedia.project.domain.member.Mbti;
 import himedia.project.domain.member.Member;
 import himedia.project.domain.member.MemberAge;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,18 +8,21 @@
   </head>
   <body>
     <h1>result</h1>
-    <div th:text="|${member.memberName}님이 로그인 중입니다.|"></div>
+    <div th:text="|${member?.memberName}님이 로그인 중입니다.|"></div>
     <br />
     <div>
       <table>
         <tr>
-          <th>이름 :</th>
-          <th>나이 :</th>
-          <th>성별 :</th>
-          <th>MBTI :</th>
-          <th>거주지 :</th>
+          <th>이름</th>
+          <th>나이</th>
+          <th>성별</th>
+          <th>MBTI</th>
+          <th>거주지</th>
         </tr>
-        <tr th:each="${list}">
+        <tr th:if="${list.empty}">
+          <td colspan="5">No List</td>
+        </tr>
+        <tr th:each="list: ${list}">
           <td th:text="${list.memberName}"></td>
           <td th:text="${list.memberAge}"></td>
           <td th:text="${list.gender}"></td>

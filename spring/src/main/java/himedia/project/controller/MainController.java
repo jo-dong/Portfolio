@@ -29,7 +29,6 @@ public class MainController {
         if(session == null) {
             return "/member/login";
         }
-        log.info("여기 잘못");
         Member memberSession = (Member)session.getAttribute(SessionConst.sessionId);
         Optional<Member> findMember = memberRepository.findByMemberId(memberSession.getMemberId());
         Member member = findMember.orElse(null);
@@ -38,7 +37,6 @@ public class MainController {
             return "/member/login";
         }
         
-        log.info("멤버 : " + findMember.get());
         log.info("멤버 : " + member);
         model.addAttribute("member", member);
         return "main";

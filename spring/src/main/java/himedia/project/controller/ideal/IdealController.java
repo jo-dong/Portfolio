@@ -65,31 +65,24 @@ public class IdealController {
 		HttpSession session = request.getSession();
 		Member loginMember = (Member)session.getAttribute(SessionConst.sessionId);
 		
+		model.addAttribute("member", loginMember);
 		
-		log.info("session ==> {}", loginMember.getGender());
-		log.info("member.regions ==> {}", member.getRegion());
-		log.info("member.memberAge ==> {}", member.getMemberAge());
-		log.info("member.mbti ==> {}", member.getMbti());
+		log.info("member -> {}", loginMember);
 		
 		// 로그인 된 회원이 남성일 경우
 		if(loginMember.getGender().equals(Gender.M)) {
-			log.info("M 실행완료");
 			List<Member> femaleList = idealService.getIdealMale(member.getMemberAge(), 
-																  member.getRegion(), 
-																  member.getMbti());
-			log.info("member.getMemberAge -> {}", femaleList.get(0).getMemberAge());
-			log.info("member.getMemberName -> {}", femaleList.get(0).getMemberName());
+																member.getRegion(), 
+																member.getMbti());
 			model.addAttribute("list", femaleList);
-			model.addAttribute("member", loginMember);
-			return "redirect:/ideal/result";
+			return "ideal/result";
 		}
 		// 로그인 된 회원이 여성일 경우
 		List<Member> maleList = idealService.getIdealFemale(member.getMemberAge(),
-															  member.getRegion(),
-															  member.getMbti());
+															member.getRegion(),
+															member.getMbti());
 		model.addAttribute("list", maleList);
-		model.addAttribute("member", loginMember);
-		return "redirect:/ideal/result";
+		return "ideal/result";
 	}
 	
 	@GetMapping("/result")

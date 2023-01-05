@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import himedia.project.domain.member.Gender;
 import himedia.project.domain.member.Mbti;
 import himedia.project.domain.member.Member;
 import himedia.project.domain.member.MemberAge;
@@ -27,14 +26,6 @@ public interface IdealRepository extends JpaRepository<Member, Long> {
 						   "and m.region like :region " +
 						   "and m.gender like 'F'";
 	
-	final String native1 = "select m.member_name, m.member_age, m.gender, m.mbti, m.region " + 
-						   "from member_info m " + 
-						   "where m.member_age like :memberAge " + 
-						   "and m.mbti like :mbti " +
-						   "and m.region like :region " +
-						   "and m.gender like 'F'";
-	
-//	@Query(value = native1, nativeQuery = true)
 	@Query(strMale)
 	public List<Member> getIdealMale(@Param("memberAge") MemberAge memberAge,
 									 @Param("region") Region region,

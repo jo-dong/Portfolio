@@ -35,17 +35,12 @@ public class MemberController {
 	public String register(@Valid Member member,
 						   BindingResult result,
 						   Model model) {
-	    log.info("member ID -> {}", member.getMemberId());
-	    log.info("member AGE -> {}", member.getMemberAge());
 	    if (result.hasErrors()) {
 	        return "member/sign-up";
 	    }
 	    
 		service.save(member);
 		
-		log.info("{}", service.findByMemberId(member.getMemberId()));
-		log.info("controller : 전달 완료");
-		log.info("Region : {}", member.getRegion());
 		return "redirect:/";
 	}
 	
@@ -70,7 +65,6 @@ public class MemberController {
         Member loginMember = service.login(member.getMemberId(), member.getMemberPw());
         
         if(loginMember == null) {
-        	log.info("[null] login member : " + loginMember);
         	model.addAttribute("member", loginMember);
             return "redirect:login";
         }
@@ -80,15 +74,7 @@ public class MemberController {
         
         Member userInfo = (Member) session.getAttribute(SessionConst.sessionId);
         
-        // 로그인 연동 시간 남으면 해보기
-//        session.setAttribute("sessionUser", loginMember);
-//        
-//        Member userInfo = (Member) session.getAttribute("sessionUser");
-        
         model.addAttribute("member", userInfo);
-//        model.addAttribute("member", loginMember);
-        log.info("성공 member : {}", loginMember);
-        log.info("maxInactiveInterval : {}", session.getMaxInactiveInterval());
         
         return "redirect:/";
     }
