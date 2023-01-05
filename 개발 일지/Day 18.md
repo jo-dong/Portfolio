@@ -55,9 +55,9 @@ public class IdealController {
 
 	@PostMapping("/check")
 	public String checkIdeal(@ModelAttribute Member member,
-							 HttpServletRequest request,
-							 RedirectAttributes redirectAttributes,
-							 Model model) {
+				 HttpServletRequest request,
+				 RedirectAttributes redirectAttributes,
+				 Model model) {
 		HttpSession session = request.getSession();
 		Member loginMember = (Member)session.getAttribute(SessionConst.sessionId);
 
@@ -66,15 +66,15 @@ public class IdealController {
 		// 로그인 된 회원이 남성일 경우
 		if(loginMember.getGender().equals(Gender.M)) {
 			List<Member> femaleList = idealService.getIdealMale(member.getMemberAge(),
-																member.getRegion(),
-																member.getMbti());
+									    member.getRegion(),
+									    member.getMbti());
 			model.addAttribute("list", femaleList);
 			return "ideal/result";
 		}
 		// 로그인 된 회원이 여성일 경우
 		List<Member> maleList = idealService.getIdealFemale(member.getMemberAge(),
-															member.getRegion(),
-															member.getMbti());
+								    member.getRegion(),
+								    member.getMbti());
 		model.addAttribute("list", maleList);
 		return "redirect:/ideal/result";
 	}
@@ -148,26 +148,26 @@ public interface IdealRepository extends JpaRepository<Member, Long> {
 //	    and gender like 'M';
 
 	final String strMale = "select m from Member m " +
-						   "where m.memberAge like :memberAge " +
-						   "and m.mbti like :mbti " +
-						   "and m.region like :region " +
-						   "and m.gender like 'F'";
+			       "where m.memberAge like :memberAge " +
+			       "and m.mbti like :mbti " +
+			       "and m.region like :region " +
+			       "and m.gender like 'F'";
 
 	@Query(strMale)
 	public List<Member> getIdealMale(@Param("memberAge") MemberAge memberAge,
-									 @Param("region") Region region,
-									 @Param("mbti") Mbti mbti);
+					 @Param("region") Region region,
+					 @Param("mbti") Mbti mbti);
 
 	final String strFemale = "select m from Member m " +
-						     "where m.memberAge like :memberAge " +
-						     "and m.mbti like :mbti " +
-						     "and m.region like :region " +
-						     "and m.gender like 'M'";
+				 "where m.memberAge like :memberAge " +
+				 "and m.mbti like :mbti " +
+				 "and m.region like :region " +
+				 "and m.gender like 'M'";
 
 	@Query(strFemale)
 	public List<Member> getIdealFemale(@Param("memberAge") MemberAge memberAge,
-									   @Param("region") Region region,
-									   @Param("mbti") Mbti mbti);
+					   @Param("region") Region region,
+					   @Param("mbti") Mbti mbti);
 }
 
 ```
@@ -209,10 +209,12 @@ public interface IdealRepository extends JpaRepository<Member, Long> {
 > Radio 버튼을 클릭 후 전송하면
 
 <!-- Image 1 -->
+![0106_1](https://user-images.githubusercontent.com/111822816/210792749-39118420-e2d7-4d6b-b277-5be19b78a2b4.PNG)
 
 > 선택한 항목과 일치하는 회원 정보를 출력한다.
 
 <!-- Image 2 -->
+![0106_2](https://user-images.githubusercontent.com/111822816/210792720-8ca5178f-7d99-4e9a-aa9f-eaca9e82fac7.PNG)
 
 ---
 
