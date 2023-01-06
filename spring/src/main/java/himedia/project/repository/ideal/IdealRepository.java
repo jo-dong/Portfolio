@@ -41,4 +41,62 @@ public interface IdealRepository extends JpaRepository<Member, Long> {
 	public List<Member> getIdealFemale(@Param("memberAge") MemberAge memberAge,
 									   @Param("region") Region region,
 									   @Param("mbti") Mbti mbti);
+	
+	// 회원 통계 - 남자
+	// 연령대별
+	String male1 = "select count(*) " +
+				   "from Member m " +
+				   "where m.memberAge like :memberAge " +
+				   "and m.gender like 'M' " +
+				   "group by m.idx";
+	@Query(male1)
+	public long getMaleCountByMemberAge(@Param("memberAge") MemberAge memberAge);
+	
+	// 거주지별
+	String male2 = "select count(*) " +
+			  	   "from Member m " +
+			  	   "where m.region like :region " +
+			  	   "and m.gender like 'M' " +
+			  	   "group by m.idx";
+	@Query(male2)
+	public long getMaleCountByRegion(@Param("region") Region region);
+	
+	// MBTI별
+	String male3 = "select count(*) " +
+			  	   "from Member m " +
+			  	   "where m.mbti like :mbti " +
+			  	   "and m.gender like 'M' " +
+			  	   "group by m.idx";
+	@Query(male3)
+	public long getMaleCountByMbti(@Param("mbti") Mbti mbti);
+	
+	// ------------------------------------------------------------------
+	// 회원 통계 - 여자
+	// 연령대별
+	String female1 = "select count(*) " +
+				  	 "from Member m " +
+				  	 "where m.memberAge like :memberAge " +
+				  	 "and m.gender like 'F' " +
+				  	 "group by m.idx";
+	@Query(female1)
+	public long getFemaleCountByMemberAge(@Param("memberAge") MemberAge memberAge);
+	
+	// 거주지별
+	String female2 = "select count(*) " +
+			  	   	 "from Member m " +
+			  	     "where m.region like :region " +
+			  	   	 "and m.gender like 'F' " +
+			  	   	 "group by m.idx";
+	@Query(female2)
+	public long getFemaleCountByRegion(@Param("region") Region region);
+	
+	// MBTI별
+	String female3 = "select count(*) " +
+			  	   	 "from Member m " +
+			  	   	 "where m.mbti like :mbti " +
+			  	   	 "and m.gender like 'F' " + 
+			  	   	 "group by m.idx";
+	@Query(female3)
+	public long getFemaleCountByMbti(@Param("mbti") Mbti mbti);
+	
 }

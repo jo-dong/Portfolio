@@ -19,17 +19,27 @@
           <th>MBTI</th>
           <th>거주지</th>
         </tr>
-        <tr th:if="${list.empty}">
+        <!-- <tr th:if="${list.empty}">
           <td colspan="5">No List</td>
-        </tr>
+        </tr> -->
         <tr th:each="list: ${list}">
-          <td th:text="${list.memberName}"></td>
-          <td th:text="${list.memberAge}"></td>
-          <td th:text="${list.gender}"></td>
-          <td th:text="${list.mbti}"></td>
-          <td th:text="${list.region}"></td>
+          <td th:text="${list?.memberName}"></td>
+          <td th:text="${list?.memberAge}"></td>
+          <td th:text="${list?.gender}"></td>
+          <td th:text="${list?.mbti}"></td>
+          <td th:text="${list?.region}"></td>
         </tr>
       </table>
+      <input
+        type="button"
+        th:onclick="|location.href='@{/ideal/check}'|"
+        value="다시 검색"
+      />
+      <input
+        type="button"
+        th:onclick="|location.href='@{/}'|"
+        value="메인으로"
+      />
     </div>
   </body>
 </html>

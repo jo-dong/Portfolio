@@ -24,14 +24,12 @@ public class IdealServiceImpl implements IdealService {
 	@Override
 	public List<Member> getIdealMale(MemberAge memberAge, Region region, Mbti mbti) {
 		List<Member> maleList = idealRepository.getIdealMale(memberAge, region, mbti);
-		log.info("실행완료");
 		return maleList;
 	}
 
 	@Override
 	public List<Member> getIdealFemale(MemberAge memberAge, Region region, Mbti mbti) {
 		List<Member> femaleList = idealRepository.getIdealFemale(memberAge, region, mbti);
-		log.info("실행완료");
 		return femaleList;
 	}
 	

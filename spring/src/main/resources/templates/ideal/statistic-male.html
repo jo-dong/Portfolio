@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,6 +7,26 @@
     <title>회원 통계 - 남성</title>
   </head>
   <body>
-    
+    <h1>MALE</h1>
+    <div th:text="|${member.memberName}님이 로그인 중입니다.|"></div>
+    <div>
+      <table>
+        <tr th:each="male:${male}">
+          <th>연령대별</th>
+          <td th>1</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <th>거주지별</th>
+          <td>1</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <th>MBTI별</th>
+          <td>1</td>
+          <td>2</td>
+        </tr>
+      </table>
+    </div>
   </body>
 </html>

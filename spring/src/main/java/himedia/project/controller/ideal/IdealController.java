@@ -51,6 +51,7 @@ public class IdealController {
 		return Gender.values();
 	}
 	
+	// Ideal Check
 	@GetMapping("/check")
 	public String check(Model model) {
 		model.addAttribute("member", new Member());
@@ -85,11 +86,13 @@ public class IdealController {
 		return "ideal/result";
 	}
 	
+	// result
 	@GetMapping("/result")
 	public String result() {
 		return "ideal/result";
 	}
 	
+	// statistic
 	@GetMapping("/statistic")
 	public String statistic(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
@@ -97,6 +100,17 @@ public class IdealController {
 		
 		model.addAttribute("member", member);
 		return "ideal/statistic";
+	}
+	
+	@GetMapping("/statistic-male")
+	public String statisticMale(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		Member member = (Member) session.getAttribute(SessionConst.sessionId);
+		
+		
+		
+		model.addAttribute("member", member);
+		return "ideal/statistic-male";
 	}
 	
 	
